@@ -1,0 +1,1389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="testModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="testModelStoreContainer">
+          <EntitySet Name="Achievement" EntityType="testModel.Store.Achievement" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Achievement_type" EntityType="testModel.Store.Achievement_type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Classgroup" EntityType="testModel.Store.Classgroup" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Contest_result" EntityType="testModel.Store.Contest_result" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Event" EntityType="testModel.Store.Event" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GroupAchievement" EntityType="testModel.Store.GroupAchievement" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Level_type" EntityType="testModel.Store.Level_type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Organisators" EntityType="testModel.Store.Organisators" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Point_exceptiontable" EntityType="testModel.Store.Point_exceptiontable" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Point_maintable" EntityType="testModel.Store.Point_maintable" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Regulation" EntityType="testModel.Store.Regulation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Regulation_Role" EntityType="testModel.Store.Regulation_Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Role" EntityType="testModel.Store.Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Semestr" EntityType="testModel.Store.Semestr" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Student" EntityType="testModel.Store.Student" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StudentAchievement" EntityType="testModel.Store.StudentAchievement" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="testModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User_client" EntityType="testModel.Store.User_client" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserEvent" EntityType="testModel.Store.UserEvent" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserRole" EntityType="testModel.Store.UserRole" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="R_100" Association="testModel.Store.R_100">
+            <End Role="Regulation" EntitySet="Regulation" />
+            <End Role="Regulation_Role" EntitySet="Regulation_Role" />
+          </AssociationSet>
+          <AssociationSet Name="R_101" Association="testModel.Store.R_101">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Regulation_Role" EntitySet="Regulation_Role" />
+          </AssociationSet>
+          <AssociationSet Name="R_102" Association="testModel.Store.R_102">
+            <End Role="User_client" EntitySet="User_client" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="R_103" Association="testModel.Store.R_103">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="R_109" Association="testModel.Store.R_109">
+            <End Role="Organisators" EntitySet="Organisators" />
+            <End Role="Achievement" EntitySet="Achievement" />
+          </AssociationSet>
+          <AssociationSet Name="R_114" Association="testModel.Store.R_114">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Classgroup" EntitySet="Classgroup" />
+          </AssociationSet>
+          <AssociationSet Name="R_92" Association="testModel.Store.R_92">
+            <End Role="Achievement" EntitySet="Achievement" />
+            <End Role="Point_exceptiontable" EntitySet="Point_exceptiontable" />
+          </AssociationSet>
+          <AssociationSet Name="R_94" Association="testModel.Store.R_94">
+            <End Role="Achievement" EntitySet="Achievement" />
+            <End Role="StudentAchievement" EntitySet="StudentAchievement" />
+          </AssociationSet>
+          <AssociationSet Name="R_95" Association="testModel.Store.R_95">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentAchievement" EntitySet="StudentAchievement" />
+          </AssociationSet>
+          <AssociationSet Name="R_96" Association="testModel.Store.R_96">
+            <End Role="Achievement" EntitySet="Achievement" />
+            <End Role="GroupAchievement" EntitySet="GroupAchievement" />
+          </AssociationSet>
+          <AssociationSet Name="R_97" Association="testModel.Store.R_97">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="User_client" EntitySet="User_client" />
+          </AssociationSet>
+          <AssociationSet Name="R_98" Association="testModel.Store.R_98">
+            <End Role="User_client" EntitySet="User_client" />
+            <End Role="UserEvent" EntitySet="UserEvent" />
+          </AssociationSet>
+          <AssociationSet Name="R_99" Association="testModel.Store.R_99">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="UserEvent" EntitySet="UserEvent" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Achievement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Start_date" Type="datetime" />
+          <Property Name="End_date" Type="datetime" />
+          <Property Name="Level_type_id" Type="uniqueidentifier" />
+          <Property Name="Achievement_type_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Verified" Type="tinyint" />
+          <Property Name="Organisator_id" Type="uniqueidentifier" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Achievement_type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Classgroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Students_count" Type="int" Nullable="false" />
+          <Property Name="Mainstudent_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Contest_result">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GroupAchievement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="Start_date" Type="datetime" />
+          <Property Name="End_date" Type="datetime" />
+          <Property Name="Achievement_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Verified" Type="tinyint" />
+          <Property Name="Group_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Level_type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Organisators">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Point_exceptiontable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Points" Type="int" Nullable="false" />
+          <Property Name="Achievement_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Contest_result_id" Type="uniqueidentifier" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Point_maintable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Points" Type="int" Nullable="false" />
+          <Property Name="Level_type_id" Type="uniqueidentifier" />
+          <Property Name="Achievement_type_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Contest_result_id" Type="uniqueidentifier" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Regulation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Regulation_Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Regulation_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Role_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Semestr">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Start_date" Type="datetime" Nullable="false" />
+          <Property Name="End_date" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Studbook_number" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Group_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StudentAchievement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Amazon_link" Type="nvarchar" MaxLength="255" />
+          <Property Name="Achievement_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Student_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Contest_result_id" Type="uniqueidentifier" />
+          <Property Name="Verified" Type="tinyint" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="User_client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Pass_hash" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Student_id" Type="uniqueidentifier" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserEvent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="User_Client_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Event_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="User_Client_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Role_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="user_created" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+        </EntityType>
+        <Association Name="R_100">
+          <End Role="Regulation" Type="testModel.Store.Regulation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Regulation_Role" Type="testModel.Store.Regulation_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regulation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Regulation_Role">
+              <PropertyRef Name="Regulation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_101">
+          <End Role="Role" Type="testModel.Store.Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Regulation_Role" Type="testModel.Store.Regulation_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Regulation_Role">
+              <PropertyRef Name="Role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_102">
+          <End Role="User_client" Type="testModel.Store.User_client" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRole" Type="testModel.Store.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="User_Client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_103">
+          <End Role="Role" Type="testModel.Store.Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRole" Type="testModel.Store.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="Role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_109">
+          <End Role="Organisators" Type="testModel.Store.Organisators" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Achievement" Type="testModel.Store.Achievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organisators">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Achievement">
+              <PropertyRef Name="Organisator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_114">
+          <End Role="Student" Type="testModel.Store.Student" Multiplicity="1" />
+          <End Role="Classgroup" Type="testModel.Store.Classgroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Classgroup">
+              <PropertyRef Name="Mainstudent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_92">
+          <End Role="Achievement" Type="testModel.Store.Achievement" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Point_exceptiontable" Type="testModel.Store.Point_exceptiontable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Achievement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Point_exceptiontable">
+              <PropertyRef Name="Achievement_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_94">
+          <End Role="Achievement" Type="testModel.Store.Achievement" Multiplicity="1" />
+          <End Role="StudentAchievement" Type="testModel.Store.StudentAchievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Achievement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StudentAchievement">
+              <PropertyRef Name="Achievement_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_95">
+          <End Role="Student" Type="testModel.Store.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StudentAchievement" Type="testModel.Store.StudentAchievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StudentAchievement">
+              <PropertyRef Name="Student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_96">
+          <End Role="Achievement" Type="testModel.Store.Achievement" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupAchievement" Type="testModel.Store.GroupAchievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Achievement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GroupAchievement">
+              <PropertyRef Name="Achievement_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_97">
+          <End Role="Student" Type="testModel.Store.Student" Multiplicity="0..1" />
+          <End Role="User_client" Type="testModel.Store.User_client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User_client">
+              <PropertyRef Name="Student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_98">
+          <End Role="User_client" Type="testModel.Store.User_client" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserEvent" Type="testModel.Store.UserEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserEvent">
+              <PropertyRef Name="User_Client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_99">
+          <End Role="Event" Type="testModel.Store.Event" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserEvent" Type="testModel.Store.UserEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserEvent">
+              <PropertyRef Name="Event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="testModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="testEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Achievements" EntityType="testModel.Achievement" />
+          <EntitySet Name="Achievement_type" EntityType="testModel.Achievement_type" />
+          <EntitySet Name="Classgroups" EntityType="testModel.Classgroup" />
+          <EntitySet Name="Contest_result" EntityType="testModel.Contest_result" />
+          <EntitySet Name="Events" EntityType="testModel.Event" />
+          <EntitySet Name="GroupAchievements" EntityType="testModel.GroupAchievement" />
+          <EntitySet Name="Level_type" EntityType="testModel.Level_type" />
+          <EntitySet Name="Organisators" EntityType="testModel.Organisator" />
+          <EntitySet Name="Point_exceptiontable" EntityType="testModel.Point_exceptiontable" />
+          <EntitySet Name="Point_maintable" EntityType="testModel.Point_maintable" />
+          <EntitySet Name="Regulations" EntityType="testModel.Regulation" />
+          <EntitySet Name="Regulation_Role" EntityType="testModel.Regulation_Role" />
+          <EntitySet Name="Roles" EntityType="testModel.Role" />
+          <EntitySet Name="Semestrs" EntityType="testModel.Semestr" />
+          <EntitySet Name="Students" EntityType="testModel.Student" />
+          <EntitySet Name="StudentAchievements" EntityType="testModel.StudentAchievement" />
+          <EntitySet Name="sysdiagrams" EntityType="testModel.sysdiagram" />
+          <EntitySet Name="User_client" EntityType="testModel.User_client" />
+          <EntitySet Name="UserEvents" EntityType="testModel.UserEvent" />
+          <EntitySet Name="UserRoles" EntityType="testModel.UserRole" />
+          <AssociationSet Name="R_109" Association="testModel.R_109">
+            <End Role="Organisators" EntitySet="Organisators" />
+            <End Role="Achievement" EntitySet="Achievements" />
+          </AssociationSet>
+          <AssociationSet Name="R_92" Association="testModel.R_92">
+            <End Role="Achievement" EntitySet="Achievements" />
+            <End Role="Point_exceptiontable" EntitySet="Point_exceptiontable" />
+          </AssociationSet>
+          <AssociationSet Name="R_94" Association="testModel.R_94">
+            <End Role="Achievement" EntitySet="Achievements" />
+            <End Role="StudentAchievement" EntitySet="StudentAchievements" />
+          </AssociationSet>
+          <AssociationSet Name="R_96" Association="testModel.R_96">
+            <End Role="Achievement" EntitySet="Achievements" />
+            <End Role="GroupAchievement" EntitySet="GroupAchievements" />
+          </AssociationSet>
+          <AssociationSet Name="R_114" Association="testModel.R_114">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Classgroup" EntitySet="Classgroups" />
+          </AssociationSet>
+          <AssociationSet Name="R_99" Association="testModel.R_99">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="UserEvent" EntitySet="UserEvents" />
+          </AssociationSet>
+          <AssociationSet Name="R_100" Association="testModel.R_100">
+            <End Role="Regulation" EntitySet="Regulations" />
+            <End Role="Regulation_Role" EntitySet="Regulation_Role" />
+          </AssociationSet>
+          <AssociationSet Name="R_101" Association="testModel.R_101">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Regulation_Role" EntitySet="Regulation_Role" />
+          </AssociationSet>
+          <AssociationSet Name="R_103" Association="testModel.R_103">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="R_95" Association="testModel.R_95">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentAchievement" EntitySet="StudentAchievements" />
+          </AssociationSet>
+          <AssociationSet Name="R_97" Association="testModel.R_97">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="User_client" EntitySet="User_client" />
+          </AssociationSet>
+          <AssociationSet Name="R_102" Association="testModel.R_102">
+            <End Role="User_client" EntitySet="User_client" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="R_98" Association="testModel.R_98">
+            <End Role="User_client" EntitySet="User_client" />
+            <End Role="UserEvent" EntitySet="UserEvents" />
+          </AssociationSet>
+          <AssociationSet Name="AchievementAchievement_type" Association="testModel.AchievementAchievement_type">
+            <End Role="Achievement" EntitySet="Achievements" />
+            <End Role="Achievement_type" EntitySet="Achievement_type" />
+          </AssociationSet>
+          <AssociationSet Name="Achievement_typePoint_maintable" Association="testModel.Achievement_typePoint_maintable">
+            <End Role="Achievement_type" EntitySet="Achievement_type" />
+            <End Role="Point_maintable" EntitySet="Point_maintable" />
+          </AssociationSet>
+          <AssociationSet Name="Level_typeAchievement" Association="testModel.Level_typeAchievement">
+            <End Role="Level_type" EntitySet="Level_type" />
+            <End Role="Achievement" EntitySet="Achievements" />
+          </AssociationSet>
+          <AssociationSet Name="Level_typePoint_maintable" Association="testModel.Level_typePoint_maintable">
+            <End Role="Level_type" EntitySet="Level_type" />
+            <End Role="Point_maintable" EntitySet="Point_maintable" />
+          </AssociationSet>
+          <AssociationSet Name="Contest_resultPoint_exceptiontable" Association="testModel.Contest_resultPoint_exceptiontable">
+            <End Role="Contest_result" EntitySet="Contest_result" />
+            <End Role="Point_exceptiontable" EntitySet="Point_exceptiontable" />
+          </AssociationSet>
+          <AssociationSet Name="Contest_resultPoint_maintable" Association="testModel.Contest_resultPoint_maintable">
+            <End Role="Contest_result" EntitySet="Contest_result" />
+            <End Role="Point_maintable" EntitySet="Point_maintable" />
+          </AssociationSet>
+          <AssociationSet Name="Achievement_typePoint_exceptiontable" Association="testModel.Achievement_typePoint_exceptiontable">
+            <End Role="Achievement_type" EntitySet="Achievement_type" />
+            <End Role="Point_exceptiontable" EntitySet="Point_exceptiontable" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Achievement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Start_date" Type="DateTime" Precision="3" />
+          <Property Name="End_date" Type="DateTime" Precision="3" />
+          <Property Name="Level_type_id" Type="Guid" />
+          <Property Name="Achievement_type_id" Type="Guid" Nullable="false" />
+          <Property Name="Verified" Type="Byte" />
+          <Property Name="Organisator_id" Type="Guid" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Organisator" Relationship="testModel.R_109" FromRole="Achievement" ToRole="Organisators" />
+          <NavigationProperty Name="Point_exceptiontable" Relationship="testModel.R_92" FromRole="Achievement" ToRole="Point_exceptiontable" />
+          <NavigationProperty Name="StudentAchievements" Relationship="testModel.R_94" FromRole="Achievement" ToRole="StudentAchievement" />
+          <NavigationProperty Name="GroupAchievements" Relationship="testModel.R_96" FromRole="Achievement" ToRole="GroupAchievement" />
+          <NavigationProperty Name="Achievement_type" Relationship="testModel.AchievementAchievement_type" FromRole="Achievement" ToRole="Achievement_type" />
+          <NavigationProperty Name="Level_type" Relationship="testModel.Level_typeAchievement" FromRole="Achievement" ToRole="Level_type" />
+        </EntityType>
+        <EntityType Name="Achievement_type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Achievement" Relationship="testModel.AchievementAchievement_type" FromRole="Achievement_type" ToRole="Achievement" />
+          <NavigationProperty Name="Point_maintable" Relationship="testModel.Achievement_typePoint_maintable" FromRole="Achievement_type" ToRole="Point_maintable" />
+          <NavigationProperty Name="Point_exceptiontable" Relationship="testModel.Achievement_typePoint_exceptiontable" FromRole="Achievement_type" ToRole="Point_exceptiontable" />
+        </EntityType>
+        <EntityType Name="Classgroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Students_count" Type="Int32" Nullable="false" />
+          <Property Name="Mainstudent_id" Type="Guid" Nullable="false" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Student" Relationship="testModel.R_114" FromRole="Classgroup" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Contest_result">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Point_exceptiontable" Relationship="testModel.Contest_resultPoint_exceptiontable" FromRole="Contest_result" ToRole="Point_exceptiontable" />
+          <NavigationProperty Name="Point_maintable" Relationship="testModel.Contest_resultPoint_maintable" FromRole="Contest_result" ToRole="Point_maintable" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserEvents" Relationship="testModel.R_99" FromRole="Event" ToRole="UserEvent" />
+        </EntityType>
+        <EntityType Name="GroupAchievement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="Start_date" Type="DateTime" Precision="3" />
+          <Property Name="End_date" Type="DateTime" Precision="3" />
+          <Property Name="Achievement_id" Type="Guid" Nullable="false" />
+          <Property Name="Verified" Type="Byte" />
+          <Property Name="Group_id" Type="Guid" Nullable="false" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Achievement" Relationship="testModel.R_96" FromRole="GroupAchievement" ToRole="Achievement" />
+        </EntityType>
+        <EntityType Name="Level_type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Achievement" Relationship="testModel.Level_typeAchievement" FromRole="Level_type" ToRole="Achievement" />
+          <NavigationProperty Name="Point_maintable" Relationship="testModel.Level_typePoint_maintable" FromRole="Level_type" ToRole="Point_maintable" />
+        </EntityType>
+        <EntityType Name="Organisator">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Achievements" Relationship="testModel.R_109" FromRole="Organisators" ToRole="Achievement" />
+        </EntityType>
+        <EntityType Name="Point_exceptiontable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Points" Type="Int32" Nullable="false" />
+          <Property Name="Achievement_id" Type="Guid" Nullable="false" />
+          <Property Name="Contest_result_id" Type="Guid" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Achievement" Relationship="testModel.R_92" FromRole="Point_exceptiontable" ToRole="Achievement" />
+          <NavigationProperty Name="Contest_result" Relationship="testModel.Contest_resultPoint_exceptiontable" FromRole="Point_exceptiontable" ToRole="Contest_result" />
+          <NavigationProperty Name="Achievement_type" Relationship="testModel.Achievement_typePoint_exceptiontable" FromRole="Point_exceptiontable" ToRole="Achievement_type" />
+        </EntityType>
+        <EntityType Name="Point_maintable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Points" Type="Int32" Nullable="false" />
+          <Property Name="Level_type_id" Type="Guid" />
+          <Property Name="Achievement_type_id" Type="Guid" Nullable="false" />
+          <Property Name="Contest_result_id" Type="Guid" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Achievement_type" Relationship="testModel.Achievement_typePoint_maintable" FromRole="Point_maintable" ToRole="Achievement_type" />
+          <NavigationProperty Name="Level_type" Relationship="testModel.Level_typePoint_maintable" FromRole="Point_maintable" ToRole="Level_type" />
+          <NavigationProperty Name="Contest_result" Relationship="testModel.Contest_resultPoint_maintable" FromRole="Point_maintable" ToRole="Contest_result" />
+        </EntityType>
+        <EntityType Name="Regulation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Regulation_Role" Relationship="testModel.R_100" FromRole="Regulation" ToRole="Regulation_Role" />
+        </EntityType>
+        <EntityType Name="Regulation_Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Regulation_id" Type="Guid" Nullable="false" />
+          <Property Name="Role_id" Type="Guid" Nullable="false" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Regulation" Relationship="testModel.R_100" FromRole="Regulation_Role" ToRole="Regulation" />
+          <NavigationProperty Name="Role" Relationship="testModel.R_101" FromRole="Regulation_Role" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Regulation_Role" Relationship="testModel.R_101" FromRole="Role" ToRole="Regulation_Role" />
+          <NavigationProperty Name="UserRoles" Relationship="testModel.R_103" FromRole="Role" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="Semestr">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Start_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="End_date" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Studbook_number" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Group_id" Type="Guid" Nullable="false" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Classgroups" Relationship="testModel.R_114" FromRole="Student" ToRole="Classgroup" />
+          <NavigationProperty Name="StudentAchievements" Relationship="testModel.R_95" FromRole="Student" ToRole="StudentAchievement" />
+          <NavigationProperty Name="User_client" Relationship="testModel.R_97" FromRole="Student" ToRole="User_client" />
+        </EntityType>
+        <EntityType Name="StudentAchievement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Amazon_link" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Achievement_id" Type="Guid" Nullable="false" />
+          <Property Name="Student_id" Type="Guid" Nullable="false" />
+          <Property Name="Contest_result_id" Type="Guid" />
+          <Property Name="Verified" Type="Byte" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Achievement" Relationship="testModel.R_94" FromRole="StudentAchievement" ToRole="Achievement" />
+          <NavigationProperty Name="Student" Relationship="testModel.R_95" FromRole="StudentAchievement" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="User_client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Pass_hash" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Student_id" Type="Guid" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Student" Relationship="testModel.R_97" FromRole="User_client" ToRole="Student" />
+          <NavigationProperty Name="UserRoles" Relationship="testModel.R_102" FromRole="User_client" ToRole="UserRole" />
+          <NavigationProperty Name="UserEvents" Relationship="testModel.R_98" FromRole="User_client" ToRole="UserEvent" />
+        </EntityType>
+        <EntityType Name="UserEvent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="User_Client_id" Type="Guid" Nullable="false" />
+          <Property Name="Event_id" Type="Guid" Nullable="false" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Event" Relationship="testModel.R_99" FromRole="UserEvent" ToRole="Event" />
+          <NavigationProperty Name="User_client" Relationship="testModel.R_98" FromRole="UserEvent" ToRole="User_client" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="User_Client_id" Type="Guid" Nullable="false" />
+          <Property Name="Role_id" Type="Guid" Nullable="false" />
+          <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Role" Relationship="testModel.R_103" FromRole="UserRole" ToRole="Role" />
+          <NavigationProperty Name="User_client" Relationship="testModel.R_102" FromRole="UserRole" ToRole="User_client" />
+        </EntityType>
+        <Association Name="R_109">
+          <End Role="Organisators" Type="testModel.Organisator" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Achievement" Type="testModel.Achievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organisators">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Achievement">
+              <PropertyRef Name="Organisator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_92">
+          <End Role="Achievement" Type="testModel.Achievement" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Point_exceptiontable" Type="testModel.Point_exceptiontable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Point_exceptiontable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Achievement">
+              <PropertyRef Name="Achievement_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_94">
+          <End Role="Achievement" Type="testModel.Achievement" Multiplicity="1" />
+          <End Role="StudentAchievement" Type="testModel.StudentAchievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Achievement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StudentAchievement">
+              <PropertyRef Name="Achievement_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_96">
+          <End Role="Achievement" Type="testModel.Achievement" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupAchievement" Type="testModel.GroupAchievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Achievement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GroupAchievement">
+              <PropertyRef Name="Achievement_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_114">
+          <End Role="Student" Type="testModel.Student" Multiplicity="1" />
+          <End Role="Classgroup" Type="testModel.Classgroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Classgroup">
+              <PropertyRef Name="Mainstudent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_99">
+          <End Role="Event" Type="testModel.Event" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserEvent" Type="testModel.UserEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserEvent">
+              <PropertyRef Name="Event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_100">
+          <End Role="Regulation" Type="testModel.Regulation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Regulation_Role" Type="testModel.Regulation_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regulation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Regulation_Role">
+              <PropertyRef Name="Regulation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_101">
+          <End Role="Role" Type="testModel.Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Regulation_Role" Type="testModel.Regulation_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Regulation_Role">
+              <PropertyRef Name="Role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_103">
+          <End Role="Role" Type="testModel.Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRole" Type="testModel.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="Role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_95">
+          <End Role="Student" Type="testModel.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="StudentAchievement" Type="testModel.StudentAchievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StudentAchievement">
+              <PropertyRef Name="Student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_97">
+          <End Role="Student" Type="testModel.Student" Multiplicity="0..1" />
+          <End Role="User_client" Type="testModel.User_client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User_client">
+              <PropertyRef Name="Student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_102">
+          <End Role="User_client" Type="testModel.User_client" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRole" Type="testModel.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="User_Client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_98">
+          <End Role="User_client" Type="testModel.User_client" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserEvent" Type="testModel.UserEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserEvent">
+              <PropertyRef Name="User_Client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AchievementAchievement_type">
+          <End Type="testModel.Achievement" Role="Achievement" Multiplicity="*" />
+          <End Type="testModel.Achievement_type" Role="Achievement_type" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Achievement_type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Achievement">
+              <PropertyRef Name="Achievement_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Achievement_typePoint_maintable">
+          <End Type="testModel.Achievement_type" Role="Achievement_type" Multiplicity="1" />
+          <End Type="testModel.Point_maintable" Role="Point_maintable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Achievement_type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Point_maintable">
+              <PropertyRef Name="Achievement_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Level_typeAchievement">
+          <End Type="testModel.Level_type" Role="Level_type" Multiplicity="1" />
+          <End Type="testModel.Achievement" Role="Achievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Level_type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Achievement">
+              <PropertyRef Name="Level_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Level_typePoint_maintable">
+          <End Type="testModel.Level_type" Role="Level_type" Multiplicity="1" />
+          <End Type="testModel.Point_maintable" Role="Point_maintable" Multiplicity="*" />
+        </Association>
+        <Association Name="Contest_resultPoint_exceptiontable">
+          <End Type="testModel.Contest_result" Role="Contest_result" Multiplicity="1" />
+          <End Type="testModel.Point_exceptiontable" Role="Point_exceptiontable" Multiplicity="*" />
+        </Association>
+        <Association Name="Contest_resultPoint_maintable">
+          <End Type="testModel.Contest_result" Role="Contest_result" Multiplicity="1" />
+          <End Type="testModel.Point_maintable" Role="Point_maintable" Multiplicity="*" />
+        </Association>
+        <Association Name="Achievement_typePoint_exceptiontable">
+          <End Type="testModel.Achievement_type" Role="Achievement_type" Multiplicity="1" />
+          <End Type="testModel.Point_exceptiontable" Role="Point_exceptiontable" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="testModelStoreContainer" CdmEntityContainer="testEntities">
+          <EntitySetMapping Name="Achievements">
+            <EntityTypeMapping TypeName="testModel.Achievement">
+              <MappingFragment StoreEntitySet="Achievement">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Start_date" ColumnName="Start_date" />
+                <ScalarProperty Name="End_date" ColumnName="End_date" />
+                <ScalarProperty Name="Level_type_id" ColumnName="Level_type_id" />
+                <ScalarProperty Name="Achievement_type_id" ColumnName="Achievement_type_id" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="Organisator_id" ColumnName="Organisator_id" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Achievement_type">
+            <EntityTypeMapping TypeName="testModel.Achievement_type">
+              <MappingFragment StoreEntitySet="Achievement_type">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classgroups">
+            <EntityTypeMapping TypeName="testModel.Classgroup">
+              <MappingFragment StoreEntitySet="Classgroup">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Students_count" ColumnName="Students_count" />
+                <ScalarProperty Name="Mainstudent_id" ColumnName="Mainstudent_id" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contest_result">
+            <EntityTypeMapping TypeName="testModel.Contest_result">
+              <MappingFragment StoreEntitySet="Contest_result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="testModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupAchievements">
+            <EntityTypeMapping TypeName="testModel.GroupAchievement">
+              <MappingFragment StoreEntitySet="GroupAchievement">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Start_date" ColumnName="Start_date" />
+                <ScalarProperty Name="End_date" ColumnName="End_date" />
+                <ScalarProperty Name="Achievement_id" ColumnName="Achievement_id" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="Group_id" ColumnName="Group_id" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Level_type">
+            <EntityTypeMapping TypeName="testModel.Level_type">
+              <MappingFragment StoreEntitySet="Level_type">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organisators">
+            <EntityTypeMapping TypeName="testModel.Organisator">
+              <MappingFragment StoreEntitySet="Organisators">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Point_exceptiontable">
+            <EntityTypeMapping TypeName="testModel.Point_exceptiontable">
+              <MappingFragment StoreEntitySet="Point_exceptiontable">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Achievement_id" ColumnName="Achievement_id" />
+                <ScalarProperty Name="Contest_result_id" ColumnName="Contest_result_id" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Point_maintable">
+            <EntityTypeMapping TypeName="testModel.Point_maintable">
+              <MappingFragment StoreEntitySet="Point_maintable">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Level_type_id" ColumnName="Level_type_id" />
+                <ScalarProperty Name="Achievement_type_id" ColumnName="Achievement_type_id" />
+                <ScalarProperty Name="Contest_result_id" ColumnName="Contest_result_id" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regulations">
+            <EntityTypeMapping TypeName="testModel.Regulation">
+              <MappingFragment StoreEntitySet="Regulation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regulation_Role">
+            <EntityTypeMapping TypeName="testModel.Regulation_Role">
+              <MappingFragment StoreEntitySet="Regulation_Role">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Regulation_id" ColumnName="Regulation_id" />
+                <ScalarProperty Name="Role_id" ColumnName="Role_id" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="testModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Semestrs">
+            <EntityTypeMapping TypeName="testModel.Semestr">
+              <MappingFragment StoreEntitySet="Semestr">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Start_date" ColumnName="Start_date" />
+                <ScalarProperty Name="End_date" ColumnName="End_date" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="testModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Studbook_number" ColumnName="Studbook_number" />
+                <ScalarProperty Name="Group_id" ColumnName="Group_id" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentAchievements">
+            <EntityTypeMapping TypeName="testModel.StudentAchievement">
+              <MappingFragment StoreEntitySet="StudentAchievement">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Amazon_link" ColumnName="Amazon_link" />
+                <ScalarProperty Name="Achievement_id" ColumnName="Achievement_id" />
+                <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+                <ScalarProperty Name="Contest_result_id" ColumnName="Contest_result_id" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="testModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_client">
+            <EntityTypeMapping TypeName="testModel.User_client">
+              <MappingFragment StoreEntitySet="User_client">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Pass_hash" ColumnName="Pass_hash" />
+                <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserEvents">
+            <EntityTypeMapping TypeName="testModel.UserEvent">
+              <MappingFragment StoreEntitySet="UserEvent">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="User_Client_id" ColumnName="User_Client_id" />
+                <ScalarProperty Name="Event_id" ColumnName="Event_id" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="testModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="User_Client_id" ColumnName="User_Client_id" />
+                <ScalarProperty Name="Role_id" ColumnName="Role_id" />
+                <ScalarProperty Name="user_created" ColumnName="user_created" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

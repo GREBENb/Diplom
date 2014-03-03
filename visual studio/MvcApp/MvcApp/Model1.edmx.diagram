@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7acc260a88504e2e8cbbebead3d0ac0c" Name="Diagram1">
+        <EntityTypeShape EntityType="testModel.Achievement" Width="2" PointX="2.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.Achievement_type" Width="2.625" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.Classgroup" Width="1.5" PointX="8.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.Contest_result" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.Event" Width="1.5" PointX="8.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.GroupAchievement" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.Level_type" Width="1.5" PointX="2.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.Organisator" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.Point_exceptiontable" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.Point_maintable" Width="2.375" PointX="5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.Regulation" Width="1.5" PointX="11.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.Regulation_Role" Width="1.5" PointX="13.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.Role" Width="1.5" PointX="11.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.Semestr" Width="1.5" PointX="12.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.Student" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.StudentAchievement" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.sysdiagram" Width="1.5" PointX="13.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.User_client" Width="1.5" PointX="8.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.UserEvent" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="testModel.UserRole" Width="1.5" PointX="13.5" PointY="11.125" IsExpanded="true" />
+        <AssociationConnector Association="testModel.R_109" ManuallyRouted="false" />
+        <AssociationConnector Association="testModel.R_92" ManuallyRouted="false" />
+        <AssociationConnector Association="testModel.R_94" ManuallyRouted="false" />
+        <AssociationConnector Association="testModel.R_96" ManuallyRouted="false" />
+        <AssociationConnector Association="testModel.R_114" ManuallyRouted="false" />
+        <AssociationConnector Association="testModel.R_99" ManuallyRouted="false" />
+        <AssociationConnector Association="testModel.R_100" ManuallyRouted="false" />
+        <AssociationConnector Association="testModel.R_101" ManuallyRouted="false" />
+        <AssociationConnector Association="testModel.R_103" ManuallyRouted="false" />
+        <AssociationConnector Association="testModel.R_95" ManuallyRouted="false" />
+        <AssociationConnector Association="testModel.R_97" ManuallyRouted="false" />
+        <AssociationConnector Association="testModel.R_102" ManuallyRouted="false" />
+        <AssociationConnector Association="testModel.R_98" ManuallyRouted="false" />
+        <AssociationConnector Association="testModel.AchievementLevel_type" />
+        <AssociationConnector Association="testModel.AchievementAchievement_type" />
+        <AssociationConnector Association="testModel.GroupAchievementClassgroup" />
+        <AssociationConnector Association="testModel.Point_exceptiontableContest_result" />
+        <AssociationConnector Association="testModel.Point_maintableLevel_type" />
+        <AssociationConnector Association="testModel.Point_maintableAchievement_type" />
+        <AssociationConnector Association="testModel.Point_maintableContest_result" />
+        <AssociationConnector Association="testModel.StudentAchievementContest_result" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,67 @@
+﻿@model MvcApp.Semestr
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Semestr</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Start_date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Start_date)
+            @Html.ValidationMessageFor(model => model.Start_date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.End_date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.End_date)
+            @Html.ValidationMessageFor(model => model.End_date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.user_created)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.user_created)
+            @Html.ValidationMessageFor(model => model.user_created)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.created_at)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.created_at)
+            @Html.ValidationMessageFor(model => model.created_at)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.updated_at)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.updated_at)
+            @Html.ValidationMessageFor(model => model.updated_at)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
