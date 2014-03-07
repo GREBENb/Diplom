@@ -1,62 +1,76 @@
 ﻿<!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
-    <title>@ViewBag.Title — приложение ASP.NET MVC</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
-   @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/jquery","~/Content/themes/base/")
-     @* @Styles.Render("~/Content/themes/base/css", "~/Content/bootstrap/css", "~/Content/css")
-    @Scripts.Render("~/bundles/jquery", "~/bundles/bootstrap")*@
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico" />
+
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <header>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p class="site-title">@Html.ActionLink("ваша эмблема здесь", "Index", "Home")</p>
-            </div>
-            <div class="float-right">
-                <section id="login">
-                    @Html.Partial("_LoginPartial")
-                </section>
 
-                <gav>
-	<ul>
-		<li><a href="#">Справочник</a>
-        <ul>
-				<li>@Html.ActionLink("Семестры", "Index", "Semestr")</li>
-				<li>@Html.ActionLink("Уровни достижения", "Index", "Level_Type")</li>
-				<li>@Html.ActionLink("Результаты", "Index", "Contest_result")</li>
-				<li>@Html.ActionLink("Тип достижения", "Index", "Achievement_type")</li>
-                <li>@Html.ActionLink("Организаторы", "Index", "Organisator")</li>
-               <li>@Html.ActionLink("Достижения", "Index", "Achievement")</li>
-        </ul>
-            </li>
-		
-		
-		
-	</ul>
-</gav>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <::before>
+        <div class="container">
+            <::before>
+            <div class="navbar-header">
+                <::before>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar" />
+                    <span class="icon-bar" />
+                    <span class="icon-bar" />
+                </button>
+                <a class="navbar-brand" href="#">Project name</a>
+                <::after>
             </div>
+            <div class="collapse navbar-collapse">
+                <::before>
+                <ul class="nav navbar-nav">
+                    <::before>
+                    <li class="active">
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                    <::after>
+                </ul>
+                <::after>
+            </div>
+            <!--/.nav-collapse -->
+            <::after>
         </div>
-    </header>
-    <div id="body">
-        @RenderSection("featured", required: false)
-        <section class="content-wrapper main-content clear-fix">
-            @RenderBody()
-        </section>
+        <::after>
     </div>
-    <footer>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p>&copy; @DateTime.Now.Year — приложение ASP.NET MVC</p>
-            </div>
+    <div class="container">
+        <::before>
+        <div class="starter-template">
+            <h1>Bootstrap starter template</h1>
+            <p class="lead">
+                Use this document as a way to quickly start any new project.
+                <br />
+                All you get is this text and a mostly barebones HTML document.
+            </p>
         </div>
-    </footer>
-
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
+        <::after>
+    </div>
+    <!-- /.container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+@RenderBody()
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/metro")
+@RenderSection("scripts", required: false)
 </body>
 </html>
