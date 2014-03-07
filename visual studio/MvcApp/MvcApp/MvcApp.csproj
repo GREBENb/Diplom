@@ -40,9 +40,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Web.Mvc">
-      <HintPath>..\packages\Mvc4Futures.4.0.20710.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -172,13 +169,10 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\AuthConfig.cs" />
-    <Compile Include="App_Start\BootstrapBundleConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="BootstrapSupport\ControlGroupExtensions.cs" />
-    <Compile Include="BootstrapSupport\ViewHelperExtensions.cs" />
     <Compile Include="Classgroup.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -188,7 +182,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AchievementController.cs" />
     <Compile Include="Controllers\Achievement_typeController.cs" />
-    <Compile Include="Controllers\BootstrapBaseController.cs" />
     <Compile Include="Controllers\Contest_resultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Level_TypeController.cs" />
@@ -224,11 +217,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
-    <Compile Include="NavigationRoutes\NamedRoute.cs" />
-    <Compile Include="NavigationRoutes\NavigationExtensions.cs" />
-    <Compile Include="NavigationRoutes\NavigationRouteConfigurationExtensions.cs" />
-    <Compile Include="NavigationRoutes\NavigationRouteFilter.cs" />
     <Compile Include="Organisator.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -271,16 +259,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\body.css" />
-    <Content Include="Content\bootstrap-mvc-validation.css" />
-    <Content Include="Content\bootstrap-responsive.css" />
-    <Content Include="Content\bootstrap-responsive.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\glyphicons-halflings-white.png" />
-    <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -303,16 +282,12 @@
     <Content Include="Content\themes\base\jquery.ui.core.css" />
     <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
     <Content Include="Content\themes\base\jquery.ui.dialog.css" />
-    <Content Include="Content\themes\base\jquery.ui.menu.css" />
     <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
     <Content Include="Content\themes\base\jquery.ui.resizable.css" />
     <Content Include="Content\themes\base\jquery.ui.selectable.css" />
     <Content Include="Content\themes\base\jquery.ui.slider.css" />
-    <Content Include="Content\themes\base\jquery.ui.spinner.css" />
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
-    <Content Include="Content\themes\base\jquery.ui.tooltip.css" />
-    <Content Include="Content\themes\base\minified\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -333,15 +308,12 @@
     <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.menu.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.spinner.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <EntityDeploy Include="Model1.edmx">
@@ -361,64 +333,20 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\html5shiv.js" />
-    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-migrate-1.2.1.js" />
-    <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
-    <Content Include="Scripts\jquery-ui-1.10.4.js" />
-    <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive-custom-for-bootstrap.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
-    <Content Include="Scripts\metro-accordion.js" />
-    <Content Include="Scripts\metro-button-set.js" />
-    <Content Include="Scripts\metro-calendar.js" />
-    <Content Include="Scripts\metro-carousel.js" />
-    <Content Include="Scripts\metro-core.js" />
-    <Content Include="Scripts\metro-countdown.js" />
-    <Content Include="Scripts\metro-date-format.js" />
-    <Content Include="Scripts\metro-datepicker.js" />
-    <Content Include="Scripts\metro-dialog.js" />
-    <Content Include="Scripts\metro-drag-tile.js" />
-    <Content Include="Scripts\metro-dropdown.js" />
-    <Content Include="Scripts\metro-fluentmenu.js" />
-    <Content Include="Scripts\metro-global.js" />
-    <Content Include="Scripts\metro-hint.js" />
-    <Content Include="Scripts\metro-initiator.js" />
-    <Content Include="Scripts\metro-input-control.js" />
-    <Content Include="Scripts\metro-listview.js" />
-    <Content Include="Scripts\metro-live-tile.js" />
-    <Content Include="Scripts\metro-loader.js" />
-    <Content Include="Scripts\metro-locale.js" />
-    <Content Include="Scripts\metro-notify.js" />
-    <Content Include="Scripts\metro-panel.js" />
-    <Content Include="Scripts\metro-plugin-template.js" />
-    <Content Include="Scripts\metro-progressbar.js" />
-    <Content Include="Scripts\metro-pull.js" />
-    <Content Include="Scripts\metro-rating.js" />
-    <Content Include="Scripts\metro-scroll.js" />
-    <Content Include="Scripts\metro-slider.js" />
-    <Content Include="Scripts\metro-stepper.js" />
-    <Content Include="Scripts\metro-streamer.js" />
-    <Content Include="Scripts\metro-tab-control.js" />
-    <Content Include="Scripts\metro-table.js" />
-    <Content Include="Scripts\metro-tile-transform.js" />
-    <Content Include="Scripts\metro-times.js" />
-    <Content Include="Scripts\metro-touch-handler.js" />
-    <Content Include="Scripts\metro-treeview.js" />
-    <Content Include="Scripts\metro-wizard.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -490,16 +418,6 @@
     <Content Include="Views\Achievement\Create.cshtml" />
     <Content Include="Views\Achievement\Edit.cshtml" />
     <Content Include="Views\Achievement\Delete.cshtml" />
-    <Content Include="Scripts\README.md" />
-    <Content Include="Views\Shared\_html5shiv.cshtml" />
-    <Content Include="Views\Shared\Index.cshtml" />
-    <Content Include="Views\Shared\Details.cshtml" />
-    <Content Include="Views\Shared\Create.cshtml" />
-    <Content Include="Views\Shared\_validationSummary.cshtml" />
-    <Content Include="Views\Shared\_BootstrapLayout.narrow.cshtml" />
-    <Content Include="Views\Shared\_BootstrapLayout.empty.cshtml" />
-    <Content Include="Views\Shared\_BootstrapLayout.basic.cshtml" />
-    <Content Include="Views\Shared\_alerts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
