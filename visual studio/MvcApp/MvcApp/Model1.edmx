@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="testModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="testModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="testModelStoreContainer">
           <EntitySet Name="Achievement" EntityType="testModel.Store.Achievement" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Achievement_type" EntityType="testModel.Store.Achievement_type" store:Type="Tables" Schema="dbo" />
@@ -142,6 +142,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="Count" Type="int" Nullable="false" />
           <Property Name="Start_date" Type="datetime" />
           <Property Name="End_date" Type="datetime" />
@@ -177,6 +178,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="Points" Type="int" Nullable="false" />
           <Property Name="Achievement_id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Contest_result_id" Type="uniqueidentifier" />
@@ -189,6 +191,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="Points" Type="int" Nullable="false" />
           <Property Name="Level_type_id" Type="uniqueidentifier" />
           <Property Name="Achievement_type_id" Type="uniqueidentifier" Nullable="false" />
@@ -233,8 +236,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
           <Property Name="Start_date" Type="datetime" Nullable="false" />
-          <Property Name="End_date" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="End_date" Type="datetime" Nullable="false" />
           <Property Name="user_created" Type="varchar" MaxLength="255" />
           <Property Name="created_at" Type="datetime" />
           <Property Name="updated_at" Type="datetime" />
@@ -491,8 +495,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="testModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -690,6 +693,7 @@
           <Property Name="updated_at" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Achievement" Relationship="testModel.R_96" FromRole="GroupAchievement" ToRole="Achievement" />
           <NavigationProperty Name="Classgroup" Relationship="testModel.GroupAchievementClassgroup" FromRole="GroupAchievement" ToRole="Classgroup" />
+          <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Level_type">
           <Key>
@@ -727,6 +731,7 @@
           <Property Name="updated_at" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Achievement" Relationship="testModel.R_92" FromRole="Point_exceptiontable" ToRole="Achievement" />
           <NavigationProperty Name="Contest_result" Relationship="testModel.Point_exceptiontableContest_result" FromRole="Point_exceptiontable" ToRole="Contest_result" />
+          <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Point_maintable">
           <Key>
@@ -743,6 +748,7 @@
           <NavigationProperty Name="Level_type" Relationship="testModel.Point_maintableLevel_type" FromRole="Point_maintable" ToRole="Level_type" />
           <NavigationProperty Name="Achievement_type" Relationship="testModel.Point_maintableAchievement_type" FromRole="Point_maintable" ToRole="Achievement_type" />
           <NavigationProperty Name="Contest_result" Relationship="testModel.Point_maintableContest_result" FromRole="Point_maintable" ToRole="Contest_result" />
+          <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Regulation">
           <Key>
@@ -786,10 +792,11 @@
           </Key>
           <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Start_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="End_date" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="End_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -1224,6 +1231,7 @@
           <EntitySetMapping Name="GroupAchievements">
             <EntityTypeMapping TypeName="testModel.GroupAchievement">
               <MappingFragment StoreEntitySet="GroupAchievement">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
                 <ScalarProperty Name="Start_date" ColumnName="Start_date" />
@@ -1262,6 +1270,7 @@
           <EntitySetMapping Name="Point_exceptiontable">
             <EntityTypeMapping TypeName="testModel.Point_exceptiontable">
               <MappingFragment StoreEntitySet="Point_exceptiontable">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Points" ColumnName="Points" />
                 <ScalarProperty Name="Achievement_id" ColumnName="Achievement_id" />
@@ -1275,6 +1284,7 @@
           <EntitySetMapping Name="Point_maintable">
             <EntityTypeMapping TypeName="testModel.Point_maintable">
               <MappingFragment StoreEntitySet="Point_maintable">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Points" ColumnName="Points" />
                 <ScalarProperty Name="Level_type_id" ColumnName="Level_type_id" />
@@ -1323,6 +1333,7 @@
           <EntitySetMapping Name="Semestrs">
             <EntityTypeMapping TypeName="testModel.Semestr">
               <MappingFragment StoreEntitySet="Semestr">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Start_date" ColumnName="Start_date" />
                 <ScalarProperty Name="End_date" ColumnName="End_date" />

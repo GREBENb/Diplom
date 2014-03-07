@@ -1,0 +1,87 @@
+﻿@model MvcApp.Achievement
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Achievement</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Start_date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Start_date)
+            @Html.ValidationMessageFor(model => model.Start_date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.End_date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.End_date)
+            @Html.ValidationMessageFor(model => model.End_date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Level_type_id, "Level_type")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Level_type_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.Level_type_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Achievement_type_id, "Achievement_type")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Achievement_type_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.Achievement_type_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Verified)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Verified)
+            @Html.ValidationMessageFor(model => model.Verified)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Organisator_id, "Organisator")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Organisator_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.Organisator_id)
+        </div>
+
+
+
+        
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

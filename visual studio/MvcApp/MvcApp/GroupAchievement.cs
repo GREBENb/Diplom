@@ -24,6 +24,7 @@ namespace MvcApp
         public string user_created { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> updated_at { get; set; }
+        public string Name { get; set; }
     
         public virtual Achievement Achievement { get; set; }
         public virtual Classgroup Classgroup { get; set; }

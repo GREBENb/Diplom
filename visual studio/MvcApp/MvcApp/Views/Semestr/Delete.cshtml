@@ -1,0 +1,53 @@
+﻿@model MvcApp.Semestr
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Semestr</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Start_date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Start_date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.End_date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.End_date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.user_created)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.user_created)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.created_at)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.created_at)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.updated_at)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.updated_at)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

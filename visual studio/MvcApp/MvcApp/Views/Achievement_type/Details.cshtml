@@ -1,0 +1,43 @@
+﻿@model MvcApp.Achievement_type
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Achievement_type</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.user_created)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.user_created)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.created_at)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.created_at)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.updated_at)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.updated_at)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

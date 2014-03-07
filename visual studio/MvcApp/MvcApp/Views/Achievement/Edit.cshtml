@@ -1,0 +1,109 @@
+﻿@model MvcApp.Achievement
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Achievement</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Start_date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Start_date)
+            @Html.ValidationMessageFor(model => model.Start_date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.End_date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.End_date)
+            @Html.ValidationMessageFor(model => model.End_date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Level_type_id, "Level_type")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Level_type_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.Level_type_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Achievement_type_id, "Achievement_type")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Achievement_type_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.Achievement_type_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Verified)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Verified)
+            @Html.ValidationMessageFor(model => model.Verified)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Organisator_id, "Organisator")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Organisator_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.Organisator_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.user_created)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.user_created)
+            @Html.ValidationMessageFor(model => model.user_created)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.created_at)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.created_at)
+            @Html.ValidationMessageFor(model => model.created_at)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.updated_at)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.updated_at)
+            @Html.ValidationMessageFor(model => model.updated_at)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
