@@ -7,21 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MvcApp
+namespace MvcApp.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Regulation_Role
+    public partial class UserEvent
     {
         public System.Guid ID { get; set; }
-        public System.Guid Regulation_id { get; set; }
-        public System.Guid Role_id { get; set; }
+        public System.DateTime Date { get; set; }
+        public string Description { get; set; }
+        public System.Guid User_Client_id { get; set; }
+        public System.Guid Event_id { get; set; }
         public string user_created { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> updated_at { get; set; }
     
-        public virtual Regulation Regulation { get; set; }
-        public virtual Role Role { get; set; }
+        public virtual Event Event { get; set; }
+        public virtual User_client User_client { get; set; }
     }
 }

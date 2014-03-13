@@ -5,33 +5,34 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcApp.Models;
 
 namespace MvcApp.Controllers
 {
     public class OrganisatorController : Controller
     {
-        private testEntities db = new testEntities();
+        private DataManager dm = new DataManager();
 
         //
         // GET: /Organisator/
-
         public ActionResult Index()
         {
-            return View(db.Organisators.ToList());
+            return View(dm.Get_Organisator());
         }
+        
+          
+       //
+      // GET: /Organisator/Details/5
 
-        //
-        // GET: /Organisator/Details/5
 
         public ActionResult Details(Guid id)
         {
-            Organisator organisator = db.Organisators.Find(id);
-            if (organisator == null)
-            {
-                return HttpNotFound();
-            }
-            return View(organisator);
+            return View(dm.Organisator_Get_Element(id));
+             
         }
+
+
+
 
         //
         // GET: /Organisator/Create
@@ -44,32 +45,33 @@ namespace MvcApp.Controllers
         //
         // POST: /Organisator/Create
 
+
         [HttpPost]
         public ActionResult Create(Organisator organisator)
         {
             if (ModelState.IsValid)
             {
                 organisator.ID = Guid.NewGuid();
-                db.Organisators.Add(organisator);
-                db.SaveChanges();
+                dm.Organisator_Create(organisator);
+                dm.Save();
                 return RedirectToAction("Index");
             }
 
             return View(organisator);
         }
 
+
         //
         // GET: /Organisator/Edit/5
 
+
         public ActionResult Edit(Guid id)
         {
-            Organisator organisator = db.Organisators.Find(id);
-            if (organisator == null)
-            {
-                return HttpNotFound();
-            }
+            Organisator organisator = dm.Organisator_Get_Element(id);
             return View(organisator);
         }
+
+
 
         //
         // POST: /Organisator/Edit/5
@@ -79,8 +81,8 @@ namespace MvcApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(organisator).State = EntityState.Modified;
-                db.SaveChanges();
+                dm.Organisator_Edit(organisator);
+                dm.Save();
                 return RedirectToAction("Index");
             }
             return View(organisator);
@@ -91,30 +93,29 @@ namespace MvcApp.Controllers
 
         public ActionResult Delete(Guid id)
         {
-            Organisator organisator = db.Organisators.Find(id);
-            if (organisator == null)
-            {
-                return HttpNotFound();
-            }
+            Organisator organisator = dm.Organisator_Get_Element(id);
             return View(organisator);
         }
+        
 
         //
         // POST: /Organisator/Delete/5
 
+
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(Guid id)
+        public ActionResult DeleteConfirmed(Organisator organistor)
         {
-            Organisator organisator = db.Organisators.Find(id);
-            db.Organisators.Remove(organisator);
-            db.SaveChanges();
+            dm.Organisator_Delete(organistor);
             return RedirectToAction("Index");
+
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
+
+
+        //protected override void Dispose(bool disposing)
+        //{
+        //    db.Dispose();
+        //    base.Dispose(disposing);
+        //}
     }
 }

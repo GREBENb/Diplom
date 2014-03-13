@@ -5,32 +5,29 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcApp.Models;
 
 namespace MvcApp.Controllers
 {
     public class SemestrController : Controller
     {
-        private testEntities db = new testEntities();
+        private DataManager dm = new DataManager();
 
         //
         // GET: /Semestr/
 
         public ActionResult Index()
         {
-            return View(db.Semestrs.ToList());
+            return View(dm.Get_Semestr());
         }
 
+                
         //
         // GET: /Semestr/Details/5
 
         public ActionResult Details(Guid id)
         {
-            Semestr semestr = db.Semestrs.Find(id);
-            if (semestr == null)
-            {
-                return HttpNotFound();
-            }
-            return View(semestr);
+            return View(dm.Semestr_Get_Element(id));
         }
 
         //
@@ -50,8 +47,8 @@ namespace MvcApp.Controllers
             if (ModelState.IsValid)
             {
                 semestr.ID = Guid.NewGuid();
-                db.Semestrs.Add(semestr);
-                db.SaveChanges();
+                dm.Semestr_Create(semestr);
+                dm.Save();
                 return RedirectToAction("Index");
             }
 
@@ -63,11 +60,7 @@ namespace MvcApp.Controllers
 
         public ActionResult Edit(Guid id)
         {
-            Semestr semestr = db.Semestrs.Find(id);
-            if (semestr == null)
-            {
-                return HttpNotFound();
-            }
+            Semestr semestr = dm.Semestr_Get_Element(id);
             return View(semestr);
         }
 
@@ -79,8 +72,8 @@ namespace MvcApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(semestr).State = EntityState.Modified;
-                db.SaveChanges();
+                dm.Semestr_Edit(semestr);
+                dm.Save();
                 return RedirectToAction("Index");
             }
             return View(semestr);
@@ -91,11 +84,7 @@ namespace MvcApp.Controllers
 
         public ActionResult Delete(Guid id)
         {
-            Semestr semestr = db.Semestrs.Find(id);
-            if (semestr == null)
-            {
-                return HttpNotFound();
-            }
+            Semestr semestr = dm.Semestr_Get_Element(id);
             return View(semestr);
         }
 
@@ -103,18 +92,17 @@ namespace MvcApp.Controllers
         // POST: /Semestr/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(Guid id)
+        public ActionResult DeleteConfirmed(Semestr semestr)
         {
-            Semestr semestr = db.Semestrs.Find(id);
-            db.Semestrs.Remove(semestr);
-            db.SaveChanges();
+            dm.Semestr_Delete(semestr);
             return RedirectToAction("Index");
+
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    db.Dispose();
+        //    base.Dispose(disposing);
+        //}
     }
 }

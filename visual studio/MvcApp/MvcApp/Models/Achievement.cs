@@ -7,26 +7,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MvcApp
+namespace MvcApp.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class GroupAchievement
+    public partial class Achievement
     {
+        public Achievement()
+        {
+            this.Point_exceptiontable = new HashSet<Point_exceptiontable>();
+            this.StudentAchievements = new HashSet<StudentAchievement>();
+            this.GroupAchievements = new HashSet<GroupAchievement>();
+        }
+    
         public System.Guid ID { get; set; }
-        public int Count { get; set; }
+        public string Name { get; set; }
         public Nullable<System.DateTime> Start_date { get; set; }
         public Nullable<System.DateTime> End_date { get; set; }
-        public System.Guid Achievement_id { get; set; }
+        public Nullable<System.Guid> Level_type_id { get; set; }
+        public System.Guid Achievement_type_id { get; set; }
         public Nullable<byte> Verified { get; set; }
-        public System.Guid Classgroup_id { get; set; }
+        public Nullable<System.Guid> Organisator_id { get; set; }
         public string user_created { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> updated_at { get; set; }
-        public string Name { get; set; }
     
-        public virtual Achievement Achievement { get; set; }
-        public virtual Classgroup Classgroup { get; set; }
+        public virtual Organisator Organisator { get; set; }
+        public virtual ICollection<Point_exceptiontable> Point_exceptiontable { get; set; }
+        public virtual ICollection<StudentAchievement> StudentAchievements { get; set; }
+        public virtual ICollection<GroupAchievement> GroupAchievements { get; set; }
+        public virtual Level_type Level_type { get; set; }
+        public virtual Achievement_type Achievement_type { get; set; }
     }
 }

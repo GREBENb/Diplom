@@ -7,30 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MvcApp
+namespace MvcApp.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class GroupAchievement
     {
-        public Student()
-        {
-            this.Classgroups = new HashSet<Classgroup>();
-            this.StudentAchievements = new HashSet<StudentAchievement>();
-            this.User_client = new HashSet<User_client>();
-        }
-    
         public System.Guid ID { get; set; }
-        public string Name { get; set; }
-        public string Studbook_number { get; set; }
+        public int Count { get; set; }
+        public Nullable<System.DateTime> Start_date { get; set; }
+        public Nullable<System.DateTime> End_date { get; set; }
+        public System.Guid Achievement_id { get; set; }
+        public Nullable<byte> Verified { get; set; }
         public System.Guid Classgroup_id { get; set; }
         public string user_created { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> updated_at { get; set; }
+        public string Name { get; set; }
     
-        public virtual ICollection<Classgroup> Classgroups { get; set; }
-        public virtual ICollection<StudentAchievement> StudentAchievements { get; set; }
-        public virtual ICollection<User_client> User_client { get; set; }
+        public virtual Achievement Achievement { get; set; }
+        public virtual Classgroup Classgroup { get; set; }
     }
 }

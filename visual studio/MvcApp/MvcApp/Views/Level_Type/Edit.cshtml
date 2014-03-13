@@ -1,4 +1,4 @@
-﻿@model MvcApp.Level_type
+﻿@model MvcApp.Models.Level_type
 
 @{
     ViewBag.Title = "Edit";
@@ -13,6 +13,9 @@
         <legend>Level_type</legend>
 
         @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(Model => Model.user_created)
+        @Html.HiddenFor(Model => Model.created_at)
+        @Html.HiddenFor(Model => Model.updated_at)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -21,7 +24,7 @@
             @Html.EditorFor(model => model.Name)
             @Html.ValidationMessageFor(model => model.Name)
         </div>
-
+        
         
 
         <p>

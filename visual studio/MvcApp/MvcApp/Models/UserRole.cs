@@ -7,24 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MvcApp
+namespace MvcApp.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Organisator
+    public partial class UserRole
     {
-        public Organisator()
-        {
-            this.Achievements = new HashSet<Achievement>();
-        }
-    
         public System.Guid ID { get; set; }
-        public string Name { get; set; }
+        public System.Guid User_Client_id { get; set; }
+        public System.Guid Role_id { get; set; }
         public string user_created { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> updated_at { get; set; }
     
-        public virtual ICollection<Achievement> Achievements { get; set; }
+        public virtual Role Role { get; set; }
+        public virtual User_client User_client { get; set; }
     }
 }

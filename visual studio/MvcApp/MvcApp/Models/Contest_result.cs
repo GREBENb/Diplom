@@ -7,23 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MvcApp
+namespace MvcApp.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class UserEvent
+    public partial class Contest_result
     {
+        public Contest_result()
+        {
+            this.Point_exceptiontable = new HashSet<Point_exceptiontable>();
+            this.Point_maintable = new HashSet<Point_maintable>();
+            this.StudentAchievement = new HashSet<StudentAchievement>();
+        }
+    
         public System.Guid ID { get; set; }
-        public System.DateTime Date { get; set; }
-        public string Description { get; set; }
-        public System.Guid User_Client_id { get; set; }
-        public System.Guid Event_id { get; set; }
+        public string Name { get; set; }
         public string user_created { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> updated_at { get; set; }
     
-        public virtual Event Event { get; set; }
-        public virtual User_client User_client { get; set; }
+        public virtual ICollection<Point_exceptiontable> Point_exceptiontable { get; set; }
+        public virtual ICollection<Point_maintable> Point_maintable { get; set; }
+        public virtual ICollection<StudentAchievement> StudentAchievement { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MvcApp.Achievement_type>
+﻿@model List<MvcApp.Models.Achievement_type>
 
 @{
     ViewBag.Title = "Index";
@@ -12,16 +12,16 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.First().Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.user_created)
+            @Html.DisplayNameFor(model => model.First().user_created)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.created_at)
+            @Html.DisplayNameFor(model => model.First().created_at)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.updated_at)
+            @Html.DisplayNameFor(model => model.First().updated_at)
         </th>
         <th></th>
     </tr>

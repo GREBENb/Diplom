@@ -7,27 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MvcApp
+namespace MvcApp.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Classgroup
+    public partial class Role
     {
-        public Classgroup()
+        public Role()
         {
-            this.GroupAchievement = new HashSet<GroupAchievement>();
+            this.Regulation_Role = new HashSet<Regulation_Role>();
+            this.UserRoles = new HashSet<UserRole>();
         }
     
         public System.Guid ID { get; set; }
         public string Name { get; set; }
-        public int Students_count { get; set; }
-        public System.Guid Mainstudent_id { get; set; }
         public string user_created { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> updated_at { get; set; }
     
-        public virtual Student Student { get; set; }
-        public virtual ICollection<GroupAchievement> GroupAchievement { get; set; }
+        public virtual ICollection<Regulation_Role> Regulation_Role { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }

@@ -7,17 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MvcApp
+namespace MvcApp.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Level_type
+    public partial class Organisator
     {
-        public Level_type()
+        public Organisator()
         {
-            this.Achievement = new HashSet<Achievement>();
-            this.Point_maintable = new HashSet<Point_maintable>();
+            this.Achievements = new HashSet<Achievement>();
         }
     
         public System.Guid ID { get; set; }
@@ -26,7 +25,6 @@ namespace MvcApp
         public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> updated_at { get; set; }
     
-        public virtual ICollection<Achievement> Achievement { get; set; }
-        public virtual ICollection<Point_maintable> Point_maintable { get; set; }
+        public virtual ICollection<Achievement> Achievements { get; set; }
     }
 }

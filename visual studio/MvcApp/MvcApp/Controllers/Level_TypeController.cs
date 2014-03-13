@@ -5,32 +5,29 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcApp.Models;
 
 namespace MvcApp.Controllers
 {
     public class Level_TypeController : Controller
     {
-        private testEntities db = new testEntities();
+        private DataManager dm = new DataManager();
 
         //
         // GET: /Level_Type/
 
         public ActionResult Index()
         {
-            return View(db.Level_type.ToList());
+            return View(dm.Get_Level_Type());
         }
 
+        
         //
         // GET: /Level_Type/Details/5
 
         public ActionResult Details(Guid id)
         {
-            Level_type level_type = db.Level_type.Find(id);
-            if (level_type == null)
-            {
-                return HttpNotFound();
-            }
-            return View(level_type);
+            return View(dm.Level_Type_Get_Element(id));
         }
 
         //
@@ -50,8 +47,8 @@ namespace MvcApp.Controllers
             if (ModelState.IsValid)
             {
                 level_type.ID = Guid.NewGuid();
-                db.Level_type.Add(level_type);
-                db.SaveChanges();
+                dm.Level_Type_Create(level_type);
+                dm.Save();
                 return RedirectToAction("Index");
             }
 
@@ -63,12 +60,8 @@ namespace MvcApp.Controllers
 
         public ActionResult Edit(Guid id)
         {
-            Level_type level_type = db.Level_type.Find(id);
-            if (level_type == null)
-            {
-                return HttpNotFound();
-            }
-            return View(level_type);
+            Level_type Level_type = dm.Level_Type_Get_Element(id);
+            return View(Level_type);
         }
 
         //
@@ -79,8 +72,8 @@ namespace MvcApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(level_type).State = EntityState.Modified;
-                db.SaveChanges();
+                dm.Level_Type_Edit(level_type);
+                dm.Save();
                 return RedirectToAction("Index");
             }
             return View(level_type);
@@ -89,32 +82,27 @@ namespace MvcApp.Controllers
         //
         // GET: /Level_Type/Delete/5
 
-        public ActionResult Delete(Guid id )
+        public ActionResult Delete(Guid id)
         {
-            Level_type level_type = db.Level_type.Find(id);
-            if (level_type == null)
-            {
-                return HttpNotFound();
-            }
+            Level_type level_type = dm.Level_Type_Get_Element(id);
             return View(level_type);
         }
 
         //
         // POST: /Level_Type/Delete/5
 
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(Guid id)
+         [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(Level_type level_type)
         {
-            Level_type level_type = db.Level_type.Find(id);
-            db.Level_type.Remove(level_type);
-            db.SaveChanges();
+            dm.Level_Type_Delete(level_type);
             return RedirectToAction("Index");
+
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    db.Dispose();
+        //    base.Dispose(disposing);
+        //}
     }
 }

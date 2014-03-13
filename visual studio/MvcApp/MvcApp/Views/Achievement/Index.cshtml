@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MvcApp.Achievement>
+﻿@model List<MvcApp.Models.Achievement>
 
 @{
     ViewBag.Title = "Index";
@@ -12,34 +12,34 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.First().Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Start_date)
+            @Html.DisplayNameFor(model => model.First().Start_date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.End_date)
+            @Html.DisplayNameFor(model => model.First().End_date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Level_type.Name)
+            @Html.DisplayNameFor(model => model.First().Level_type.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Achievement_type.Name)
+            @Html.DisplayNameFor(model => model.First().Achievement_type.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Verified)
+            @Html.DisplayNameFor(model => model.First().Verified)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Organisator.Name)
+            @Html.DisplayNameFor(model => model.First().Organisator.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.user_created)
+            @Html.DisplayNameFor(model => model.First().user_created)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.created_at)
+            @Html.DisplayNameFor(model => model.First().created_at)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.updated_at)
+            @Html.DisplayNameFor(model => model.First().updated_at)
         </th>
         <th></th>
     </tr>

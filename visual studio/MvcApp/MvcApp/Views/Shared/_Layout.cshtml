@@ -8,8 +8,7 @@
     <meta name="viewport" content="width=device-width" />
    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/jquery","~/Content/themes/base/")
-     @* @Styles.Render("~/Content/themes/base/css", "~/Content/bootstrap/css", "~/Content/css")
-    @Scripts.Render("~/bundles/jquery", "~/bundles/bootstrap")*@
+
 </head>
 <body>
     <header>
@@ -22,8 +21,12 @@
                     @Html.Partial("_LoginPartial")
                 </section>
 
+                <button>Запись данных</button>
+
                 <gav>
 	<ul>
+<li>@Html.ActionLink("Заполнить", "Fill", "AddRecords")</li>
+        <li>@Html.ActionLink("Очистить", "Empty", "AddRecords")</li>
 		<li><a href="#">Справочник</a>
         <ul>
 				<li>@Html.ActionLink("Семестры", "Index", "Semestr")</li>
@@ -31,7 +34,7 @@
 				<li>@Html.ActionLink("Результаты", "Index", "Contest_result")</li>
 				<li>@Html.ActionLink("Тип достижения", "Index", "Achievement_type")</li>
                 <li>@Html.ActionLink("Организаторы", "Index", "Organisator")</li>
-               <li>@Html.ActionLink("Достижения", "Index", "Achievement")</li>
+                <li>@Html.ActionLink("Достижения", "Index", "Achievement")</li>
         </ul>
             </li>
 		

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MvcApp.Semestr>
+﻿@model List<MvcApp.Models.Semestr>
 
 @{
     ViewBag.Title = "Index";
@@ -12,25 +12,30 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Start_date)
+            @Html.DisplayNameFor(model => Model.First().Name)
+        <th>
+            @Html.DisplayNameFor(model => model.First().Start_date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.End_date)
+            @Html.DisplayNameFor(model => model.First().End_date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.user_created)
+            @Html.DisplayNameFor(model => model.First().user_created)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.created_at)
+            @Html.DisplayNameFor(model => model.First().created_at)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.updated_at)
+            @Html.DisplayNameFor(model => model.First().updated_at)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelitem => item.Name)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Start_date)
         </td>

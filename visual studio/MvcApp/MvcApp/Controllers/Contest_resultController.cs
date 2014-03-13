@@ -5,36 +5,34 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcApp.Models;
 
 namespace MvcApp.Controllers
 {
     public class Contest_resultController : Controller
     {
-        private testEntities db = new testEntities();
-
+        //private testEntities dm = new testEntities();
+        private DataManager dm = new DataManager();
         //
         // GET: /Contest_result/
 
         public ActionResult Index()
         {
-            return View(db.Contest_result.ToList());
+            return View(dm.Get_Contest_Results());
         }
 
-        //
-        // GET: /Contest_result/Details/5
 
-        public ActionResult Details(Guid id )
+        //// GET: /Contest_result/Details/5
+
+        public ActionResult Details(Guid id)
         {
-            Contest_result contest_result = db.Contest_result.Find(id);
-            if (contest_result == null)
-            {
-                return HttpNotFound();
-            }
-            return View(contest_result);
+            return View(dm.Contest_Result_Get_Element(id));
         }
 
-        //
-        // GET: /Contest_result/Create
+
+        ////
+        //// GET: /Contest_result/Create
+
 
         public ActionResult Create()
         {
@@ -50,37 +48,36 @@ namespace MvcApp.Controllers
             if (ModelState.IsValid)
             {
                 contest_result.ID = Guid.NewGuid();
-                db.Contest_result.Add(contest_result);
-                db.SaveChanges();
+                dm.Contest_Result_Create(contest_result);
+                dm.Save();
                 return RedirectToAction("Index");
             }
-
+           
             return View(contest_result);
         }
 
         //
         // GET: /Contest_result/Edit/5
 
-        public ActionResult Edit(Guid id )
+        public ActionResult Edit(Guid id)
         {
-            Contest_result contest_result = db.Contest_result.Find(id);
-            if (contest_result == null)
-            {
-                return HttpNotFound();
-            }
+            Contest_result contest_result = dm.Contest_Result_Get_Element(id);
             return View(contest_result);
         }
 
-        //
-        // POST: /Contest_result/Edit/5
+
+
+
+
+        //  POST: /Contest_result/Edit/5
 
         [HttpPost]
         public ActionResult Edit(Contest_result contest_result)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(contest_result).State = EntityState.Modified;
-                db.SaveChanges();
+                dm.Contest_resultEdit(contest_result);
+                dm.Save();
                 return RedirectToAction("Index");
             }
             return View(contest_result);
@@ -91,30 +88,29 @@ namespace MvcApp.Controllers
 
         public ActionResult Delete(Guid id)
         {
-            Contest_result contest_result = db.Contest_result.Find(id);
-            if (contest_result == null)
-            {
-                return HttpNotFound();
-            }
+            Contest_result contest_result = dm.Contest_Result_Get_Element(id);
             return View(contest_result);
         }
 
-        //
+
+
+
         // POST: /Contest_result/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(Guid id)
+        public ActionResult DeleteConfirmed(Contest_result contest_result)
         {
-            Contest_result contest_result = db.Contest_result.Find(id);
-            db.Contest_result.Remove(contest_result);
-            db.SaveChanges();
+            dm.Contest_Result_Delete(contest_result);
             return RedirectToAction("Index");
+
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
+
+
+        //protected override void Dispose(bool disposing)
+        //{
+        //    dm.Dispose();
+        //    base.Dispose(disposing);
+        //}
     }
 }

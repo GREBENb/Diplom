@@ -1,4 +1,4 @@
-﻿@model MvcApp.Achievement_type
+﻿@model MvcApp.Models.Achievement_type
 
 @{
     ViewBag.Title = "Edit";
@@ -13,7 +13,9 @@
         <legend>Achievement_type</legend>
 
         @Html.HiddenFor(model => model.ID)
-
+        @Html.HiddenFor(Model => Model.user_created)
+        @Html.HiddenFor(Model => Model.created_at)
+        @Html.HiddenFor(Model => Model.updated_at)
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>
@@ -22,30 +24,8 @@
             @Html.ValidationMessageFor(model => model.Name)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.user_created)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.user_created)
-            @Html.ValidationMessageFor(model => model.user_created)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.created_at)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.created_at)
-            @Html.ValidationMessageFor(model => model.created_at)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.updated_at)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.updated_at)
-            @Html.ValidationMessageFor(model => model.updated_at)
-        </div>
-
+      
+       
         <p>
             <input type="submit" value="Save" />
         </p>

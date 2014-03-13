@@ -1,4 +1,4 @@
-﻿@model MvcApp.Semestr
+﻿@model MvcApp.Models.Semestr
 
 @{
     ViewBag.Title = "Edit";
@@ -13,6 +13,17 @@
         <legend>Semestr</legend>
 
         @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(Model => Model.user_created)
+        @Html.HiddenFor(Model => Model.created_at)
+        @Html.HiddenFor(Model => Model.updated_at)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Start_date)
@@ -29,7 +40,8 @@
             @Html.EditorFor(model => model.End_date)
             @Html.ValidationMessageFor(model => model.End_date)
         </div>
-
+        
+        
         
         <p>
             <input type="submit" value="Save" />

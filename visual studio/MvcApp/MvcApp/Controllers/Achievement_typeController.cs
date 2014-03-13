@@ -5,32 +5,28 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcApp.Models;
 
 namespace MvcApp.Controllers
 {
     public class Achievement_typeController : Controller
     {
-        private testEntities db = new testEntities();
+        private DataManager dm = new DataManager();
 
         //
         // GET: /Achievement_type/
 
         public ActionResult Index()
         {
-            return View(db.Achievement_type.ToList());
+            return View(dm.Get_Achievement_Type());
         }
 
         //
         // GET: /Achievement_type/Details/5
 
-        public ActionResult Details(Guid id )
+        public ActionResult Details(Guid id)
         {
-            Achievement_type achievement_type = db.Achievement_type.Find(id);
-            if (achievement_type == null)
-            {
-                return HttpNotFound();
-            }
-            return View(achievement_type);
+            return View(dm.Achievement_Type_Get_Element(id));
         }
 
         //
@@ -50,8 +46,8 @@ namespace MvcApp.Controllers
             if (ModelState.IsValid)
             {
                 achievement_type.ID = Guid.NewGuid();
-                db.Achievement_type.Add(achievement_type);
-                db.SaveChanges();
+                dm.Achievement_Type_Create(achievement_type);
+                dm.Save();
                 return RedirectToAction("Index");
             }
 
@@ -61,13 +57,9 @@ namespace MvcApp.Controllers
         //
         // GET: /Achievement_type/Edit/5
 
-        public ActionResult Edit(Guid id )
+        public ActionResult Edit(Guid id)
         {
-            Achievement_type achievement_type = db.Achievement_type.Find(id);
-            if (achievement_type == null)
-            {
-                return HttpNotFound();
-            }
+            Achievement_type achievement_type = dm.Achievement_Type_Get_Element(id);
             return View(achievement_type);
         }
 
@@ -79,8 +71,8 @@ namespace MvcApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(achievement_type).State = EntityState.Modified;
-                db.SaveChanges();
+                dm.Achievement_Type_Edit(achievement_type);
+                dm.Save();
                 return RedirectToAction("Index");
             }
             return View(achievement_type);
@@ -89,32 +81,32 @@ namespace MvcApp.Controllers
         //
         // GET: /Achievement_type/Delete/5
 
-        public ActionResult Delete(Guid id )
+        public ActionResult Delete(Guid id)
         {
-            Achievement_type achievement_type = db.Achievement_type.Find(id);
-            if (achievement_type == null)
-            {
-                return HttpNotFound();
-            }
+            Achievement_type achievement_type = dm.Achievement_Type_Get_Element(id);
             return View(achievement_type);
         }
 
         //
         // POST: /Achievement_type/Delete/5
 
+
+
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(Guid id)
+
+        public ActionResult DeleteConfirmed(Achievement_type Achievement_type)
         {
-            Achievement_type achievement_type = db.Achievement_type.Find(id);
-            db.Achievement_type.Remove(achievement_type);
-            db.SaveChanges();
+            dm.Achievement_Type_Delete(Achievement_type);
             return RedirectToAction("Index");
         }
+          
+      
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
+    
+        //protected override void Dispose(bool disposing)
+        
+        //    db.Dispose();
+        //    base.Dispose(disposing);
+        //}
     }
 }
