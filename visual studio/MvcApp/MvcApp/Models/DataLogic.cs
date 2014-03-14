@@ -163,6 +163,62 @@ namespace MvcApp.Models
         }
     }
 
+    [MetadataType(typeof(GroupAchievement))]
+    public partial class GroupAchievement
+    {
+        public class GroupAchievementMetaData
+        {
+            public int ID;
+
+            public string Name {get; set;} //Тут хз как пока будет
+            
+
+            [Display(Name = "Количество участников")]
+            public int Count {get; set;}
+
+            [Display(Name = "Дата начала")]
+            public DateTime Start_date { get; set; }
+
+            [Display(Name = "Дата Окончания")]
+            public DateTime End_date { get; set; }
+
+            [Display(Name = "Достижение")]
+            public int Achievement_id { get; set; }
+
+            [Display(Name = "Группа")]
+            public int Classgroup_id { get; set; }
+
+        }
+
+    }
+
+    [MetadataType(typeof(StudentAchievement))]
+    public partial class StudentAchievement
+    {
+        public class StudentAchievementMetaData
+        {
+            public int ID;
+
+            public string Amazon_link { get; set; } 
+
+                       
+            [Display(Name = "Достижение")]
+            [Required(ErrorMessage = "Обязательнлое поле")]
+            public int Achievement_id { get; set; }
+
+
+            [Display(Name = "Студент")]
+            [Required(ErrorMessage = "Обязательнлое поле")]
+            public int Student_id { get; set; }
+ 
+
+            [Display(Name = "Результат")]
+            public int Contest_result_id { get; set; }
+
+        }
+
+    }
+
     
 }
 

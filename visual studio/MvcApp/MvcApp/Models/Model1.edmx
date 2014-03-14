@@ -112,7 +112,7 @@
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
           <Property Name="Students_count" Type="int" Nullable="false" />
-          <Property Name="Mainstudent_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Mainstudent_id" Type="uniqueidentifier" />
           <Property Name="user_created" Type="varchar" MaxLength="255" />
           <Property Name="created_at" Type="datetime" />
           <Property Name="updated_at" Type="datetime" />
@@ -390,7 +390,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="R_114">
-          <End Role="Student" Type="testModel.Store.Student" Multiplicity="1" />
+          <End Role="Student" Type="testModel.Store.Student" Multiplicity="0..1" />
           <End Role="Classgroup" Type="testModel.Store.Classgroup" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
@@ -536,10 +536,6 @@
             <End Role="Achievement" EntitySet="Achievements" />
             <End Role="GroupAchievement" EntitySet="GroupAchievements" />
           </AssociationSet>
-          <AssociationSet Name="R_114" Association="testModel.R_114">
-            <End Role="Student" EntitySet="Students" />
-            <End Role="Classgroup" EntitySet="Classgroups" />
-          </AssociationSet>
           <AssociationSet Name="R_99" Association="testModel.R_99">
             <End Role="Event" EntitySet="Events" />
             <End Role="UserEvent" EntitySet="UserEvents" />
@@ -604,6 +600,14 @@
             <End Role="StudentAchievement" EntitySet="StudentAchievements" />
             <End Role="Contest_result" EntitySet="Contest_result" />
           </AssociationSet>
+          <AssociationSet Name="StudentClassgroup" Association="testModel.StudentClassgroup">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Classgroup" EntitySet="Classgroups" />
+          </AssociationSet>
+          <AssociationSet Name="ClassgroupStudent" Association="testModel.ClassgroupStudent">
+            <End Role="Classgroup" EntitySet="Classgroups" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Achievement">
           <Key>
@@ -646,12 +650,13 @@
           <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Students_count" Type="Int32" Nullable="false" />
-          <Property Name="Mainstudent_id" Type="Guid" Nullable="false" />
+          <Property Name="Mainstudent_id" Type="Guid" />
           <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Student" Relationship="testModel.R_114" FromRole="Classgroup" ToRole="Student" />
-          <NavigationProperty Name="GroupAchievement" Relationship="testModel.GroupAchievementClassgroup" FromRole="Classgroup" ToRole="GroupAchievement" />
+          <NavigationProperty Name="GroupAchievements" Relationship="testModel.GroupAchievementClassgroup" FromRole="Classgroup" ToRole="GroupAchievement" />
+          <NavigationProperty Name="Students" Relationship="testModel.StudentClassgroup" FromRole="Classgroup" ToRole="Student" />
+          <NavigationProperty Name="MainStudent" Relationship="testModel.ClassgroupStudent" FromRole="Classgroup" ToRole="Student" />
         </EntityType>
         <EntityType Name="Contest_result">
           <Key>
@@ -809,9 +814,10 @@
           <Property Name="user_created" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Classgroups" Relationship="testModel.R_114" FromRole="Student" ToRole="Classgroup" />
           <NavigationProperty Name="StudentAchievements" Relationship="testModel.R_95" FromRole="Student" ToRole="StudentAchievement" />
           <NavigationProperty Name="User_client" Relationship="testModel.R_97" FromRole="Student" ToRole="User_client" />
+          <NavigationProperty Name="Classgroup" Relationship="testModel.StudentClassgroup" FromRole="Student" ToRole="Classgroup" />
+          <NavigationProperty Name="ClassgroupControlled" Relationship="testModel.ClassgroupStudent" FromRole="Student" ToRole="Classgroup" />
         </EntityType>
         <EntityType Name="StudentAchievement">
           <Key>
@@ -938,18 +944,6 @@
             </Principal>
             <Dependent Role="GroupAchievement">
               <PropertyRef Name="Achievement_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_114">
-          <End Role="Student" Type="testModel.Student" Multiplicity="1" />
-          <End Role="Classgroup" Type="testModel.Classgroup" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Classgroup">
-              <PropertyRef Name="Mainstudent_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1156,6 +1150,30 @@
             </Principal>
             <Dependent Role="StudentAchievement">
               <PropertyRef Name="Contest_result_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StudentClassgroup">
+          <End Type="testModel.Student" Role="Student" Multiplicity="*" />
+          <End Type="testModel.Classgroup" Role="Classgroup" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Classgroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Classgroup_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ClassgroupStudent">
+          <End Type="testModel.Classgroup" Role="Classgroup" Multiplicity="*" />
+          <End Type="testModel.Student" Role="Student" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Classgroup">
+              <PropertyRef Name="Mainstudent_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

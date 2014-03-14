@@ -48,7 +48,25 @@ namespace MvcApp.Models
             var del6 = this.Get_Semestr();
             del6.ForEach(o => db.Semestrs.Remove(o));
             this.Save();
-                      
+
+
+            var del7 = this.Get_Student();
+            del7.ForEach(o => db.Students.Remove(o));
+            this.Save();
+
+            var del8 = this.Get_Classgroup();
+            del8.ForEach(o => db.Classgroups.Remove(o));
+            this.Save();
+
+            
+            var del9 = this.Get_Group_Achievement();
+            del9.ForEach(o => db.GroupAchievements.Remove(o));
+            this.Save();
+
+            var del10 = this.Get_Student_Achievement();
+            del10.ForEach(o => db.StudentAchievements.Remove(o));
+            this.Save();
+            
 
 
         }
@@ -148,46 +166,73 @@ namespace MvcApp.Models
             Save();
 
 
-           // var Classgroup = new List<Classgroup>
-           //{
-           //     new Classgroup {Name = "АС-09", Students_count = 6},                 
-           //     new Classgroup {Name = "ВМ-09", Students_count = 5},                  
-           //     new Classgroup {Name = "ЭМ-09", Students_count = 4},
-           //};
-           // Classgroup.ForEach(s => this.Classgroup_Create(s));
-           // Save();
+            var Classgroup = new List<Classgroup>
+           {
+                new Classgroup {Name = "АС-09", Students_count = 6},                 
+                new Classgroup {Name = "ВМ-09", Students_count = 5},                  
+                new Classgroup {Name = "ЭМ-09", Students_count = 4},
+           };
+            Classgroup.ForEach(s => this.Classgroup_Create(s));
+            Save();
 
-           // var Student = new List<Student>
-           // {
-           //     //AC-09
-           //     new Student {Name = "Игнатов Борис Владиславович", Studbook_number = "K-09001", Classgroup_id = Classgroup.Single(s => s.Name ==  "АС-09").ID},
-           //     new Student {Name = "Борисов Василий Евгеньевич", Studbook_number = "K-09002", Classgroup_id = Classgroup.Single(s => s.Name ==  "АС-09").ID},
-           //     new Student {Name = "Миронов Ростислав Юрьевич", Studbook_number = "K-09003", Classgroup_id = Classgroup.Single(s => s.Name ==  "АС-09").ID},
-           //     new Student {Name = "Морозов Николай Матвеевич", Studbook_number = "K-09004", Classgroup_id = Classgroup.Single(s => s.Name ==  "АС-09").ID},
-           //     new Student {Name = "Шашков Анатолий Кириллович", Studbook_number = "K-09005", Classgroup_id = Classgroup.Single(s => s.Name ==  "АС-09").ID},
-           //     new Student {Name = "Русаков Александр Фёдорович", Studbook_number = "K-09006", Classgroup_id = Classgroup.Single(s => s.Name ==  "АС-09").ID},
-           //    //ВМ-09
-           //     new Student {Name = "Мухин Фёдор Григорьевич", Studbook_number = "K-09007", Classgroup_id = Classgroup.Single(s => s.Name ==  "ВМ-09").ID},
-           //     new Student {Name = "Юдин Олег Львович", Studbook_number = "K-09008", Classgroup_id = Classgroup.Single(s => s.Name ==  "ВМ-09").ID}, 
-           //     new Student {Name = "Мишин Евгений Егорович", Studbook_number = "K-09009", Classgroup_id = Classgroup.Single(s => s.Name ==  "ВМ-09").ID},
-           //     new Student {Name = "Анисимов Геннадий Ярославович", Studbook_number = "K-09010", Classgroup_id = Classgroup.Single(s => s.Name ==  "ВМ-09").ID},
-           //     new Student {Name = "Тимофеев Владимир Вячеславович", Studbook_number = "K-09011", Classgroup_id = Classgroup.Single(s => s.Name ==  "ВМ-09").ID},
-           //    //ЭМ-09
-           //     new Student {Name = "Новиков Роман Вадимович", Studbook_number = "K-09012", Classgroup_id = Classgroup.Single(s => s.Name ==  "ЭМ-09").ID},
-           //     new Student {Name = "Константинов Юрий Григорьевич", Studbook_number = "K-09013", Classgroup_id = Classgroup.Single(s => s.Name ==  "ЭМ-09").ID},
-           //     new Student {Name = "Данилов Николай Николаевич", Studbook_number = "K-09014", Classgroup_id = Classgroup.Single(s => s.Name ==  "ЭМ-09").ID},
-           //     new Student {Name = "Колесников Илья Русланович", Studbook_number = "K-09015", Classgroup_id = Classgroup.Single(s => s.Name ==  "ЭМ-09").ID},
-           // };
-
-            
-
-
+            var Student = new List<Student>
+            {
+                //AC-09
+                new Student {Name = "Игнатов Борис Владиславович", Studbook_number = "K-09001", Classgroup_id = Classgroup.Single(s => s.Name ==  "АС-09").ID},
+                new Student {Name = "Борисов Василий Евгеньевич", Studbook_number = "K-09002", Classgroup_id = Classgroup.Single(s => s.Name ==  "АС-09").ID},
+                new Student {Name = "Миронов Ростислав Юрьевич", Studbook_number = "K-09003", Classgroup_id = Classgroup.Single(s => s.Name ==  "АС-09").ID},
+                new Student {Name = "Морозов Николай Матвеевич", Studbook_number = "K-09004", Classgroup_id = Classgroup.Single(s => s.Name ==  "АС-09").ID},
+                new Student {Name = "Шашков Анатолий Кириллович", Studbook_number = "K-09005", Classgroup_id = Classgroup.Single(s => s.Name ==  "АС-09").ID},
+                new Student {Name = "Русаков Александр Фёдорович", Studbook_number = "K-09006", Classgroup_id = Classgroup.Single(s => s.Name ==  "АС-09").ID},
+               //ВМ-09
+                new Student {Name = "Мухин Фёдор Григорьевич", Studbook_number = "K-09007", Classgroup_id = Classgroup.Single(s => s.Name ==  "ВМ-09").ID},
+                new Student {Name = "Юдин Олег Львович", Studbook_number = "K-09008", Classgroup_id = Classgroup.Single(s => s.Name ==  "ВМ-09").ID}, 
+                new Student {Name = "Мишин Евгений Егорович", Studbook_number = "K-09009", Classgroup_id = Classgroup.Single(s => s.Name ==  "ВМ-09").ID},
+                new Student {Name = "Анисимов Геннадий Ярославович", Studbook_number = "K-09010", Classgroup_id = Classgroup.Single(s => s.Name ==  "ВМ-09").ID},
+                new Student {Name = "Тимофеев Владимир Вячеславович", Studbook_number = "K-09011", Classgroup_id = Classgroup.Single(s => s.Name ==  "ВМ-09").ID},
+               //ЭМ-09
+                new Student {Name = "Новиков Роман Вадимович", Studbook_number = "K-09012", Classgroup_id = Classgroup.Single(s => s.Name ==  "ЭМ-09").ID},
+                new Student {Name = "Константинов Юрий Григорьевич", Studbook_number = "K-09013", Classgroup_id = Classgroup.Single(s => s.Name ==  "ЭМ-09").ID},
+                new Student {Name = "Данилов Николай Николаевич", Studbook_number = "K-09014", Classgroup_id = Classgroup.Single(s => s.Name ==  "ЭМ-09").ID},
+                new Student {Name = "Колесников Илья Русланович", Studbook_number = "K-09015", Classgroup_id = Classgroup.Single(s => s.Name ==  "ЭМ-09").ID},
+            };
+            Student.ForEach(s => this.Student_Create(s));
+            Save();
 
 
 
+            var GroupAchievement = new List<GroupAchievement>
+            {
+                new GroupAchievement
+                {
+                    Name="1",
+                    Count=6,
+                    Start_date=DateTime.Parse("01.09.2013"), 
+                    End_date=DateTime.Parse("31.12.2013"),
+                    Achievement_id = Achievement.Single(s => s.Name ==  "Чемпионат института по футболу").ID,
+                    Classgroup_id = Classgroup.Single(s => s.Name == "АС-09").ID
+                }
+             };
+            GroupAchievement.ForEach(s => this.Group_Achievement_Create(s));
+            Save();
 
+
+
+            var StudentAchievement = new List<StudentAchievement>
+            {
+                new StudentAchievement
+                {
+                    Achievement_id = Achievement.Single(s => s.Name == "Областная олимпиада по ТОЭ").ID,
+                    Student_id = Student.Single(s => s.Name == "Мишин Евгений Егорович").ID,
+                    Contest_result_id = Contest_result.Single(s => s.Name == "Третье место").ID,
+                }
+            };
+            StudentAchievement.ForEach(s => this.Student_Achievement_Create(s));
+            Save(); 
         }
 
+
+       
 
 
         //Организаторы
@@ -481,47 +526,187 @@ namespace MvcApp.Models
 
         // Группы
 
-//        public List<Classgroup> Get_Classgroup()
-//        {
-//            return db.Classgroups.ToList();
-//        }
+        public List<Classgroup> Get_Classgroup()
+        {
+            return db.Classgroups.ToList();
+        }
 
-//        public Classgroup Get_Classgroup_By_ID(Guid id)
-//        {
-//            return db.Classgroups.SingleOrDefault(o => o.ID == id);
-//        }
-
-
-//        public Classgroup Classgroup_Get_Element(Guid id)
-//        {
-//            return db.Classgroups.Find(id);
-//        }
-
-//        public Classgroup Classgroup_Create(Classgroup obj)
-//        {
-//            obj.ID = Guid.NewGuid();
-//            db.Classgroups.Add(obj);
-//            db.SaveChanges();
-//            obj = db.Classgroups.FirstOrDefault(o => o.ID == obj.ID);
-//            return obj;
-//        }
+        public Classgroup Get_Classgroup_By_ID(Guid id)
+        {
+            return db.Classgroups.SingleOrDefault(o => o.ID == id);
+        }
 
 
-//        public Classgroup Classgroup_Edit(Classgroup obj)
-//        {
-//            db.Entry(obj).State = EntityState.Modified;
-//            db.SaveChanges();
-//            obj = db.Classgroups.SingleOrDefault(o => o.ID == obj.ID);
-//            return obj;
-//        }
+        public Classgroup Classgroup_Get_Element(Guid id)
+        {
+            return db.Classgroups.Find(id);
+        }
 
-//        public Classgroup Classgroup_Delete(Classgroup obj)
-//        {
-//            Classgroup classgroup = db.Classgroups.SingleOrDefault(o => o.ID == obj.ID);
-//            db.Classgroups.Remove(classgroup);
-//            db.SaveChanges();
-//            return classgroup;
-//        }
+        public Classgroup Classgroup_Create(Classgroup obj)
+        {
+            obj.ID = Guid.NewGuid();
+            db.Classgroups.Add(obj);
+            db.SaveChanges();
+            obj = db.Classgroups.FirstOrDefault(o => o.ID == obj.ID);
+            return obj;
+        }
+
+
+        public Classgroup Classgroup_Edit(Classgroup obj)
+        {
+            db.Entry(obj).State = EntityState.Modified;
+            db.SaveChanges();
+            obj = db.Classgroups.SingleOrDefault(o => o.ID == obj.ID);
+            return obj;
+        }
+
+        public Classgroup Classgroup_Delete(Classgroup obj)
+        {
+            Classgroup classgroup = db.Classgroups.SingleOrDefault(o => o.ID == obj.ID);
+            db.Classgroups.Remove(classgroup);
+            db.SaveChanges();
+            return classgroup;
+        }
         
-   }
+
+        //Студенты
+
+        public List<Student> Get_Student()
+        {
+            return db.Students.ToList();
+        }
+
+        public Student Get_Student_By_ID(Guid id)
+        {
+            return db.Students.SingleOrDefault(o => o.ID == id);
+        }
+
+
+        public Student Student_Get_Element(Guid id)
+        {
+            return db.Students.Find(id);
+        }
+
+        public Student Student_Create(Student obj)
+        {
+            obj.ID = Guid.NewGuid();
+            db.Students.Add(obj);
+            db.SaveChanges();
+            obj = db.Students.FirstOrDefault(o => o.ID == obj.ID);
+            return obj;
+        }
+
+
+        public Student Classgroup_Edit(Student obj)
+        {
+            db.Entry(obj).State = EntityState.Modified;
+            db.SaveChanges();
+            obj = db.Students.SingleOrDefault(o => o.ID == obj.ID);
+            return obj;
+        }
+
+        public Student Classgroup_Delete(Student obj)
+        {
+            Student student = db.Students.SingleOrDefault(o => o.ID == obj.ID);
+            db.Students.Remove(student);
+            db.SaveChanges();
+            return student;
+        }
+
+     //   Групповые достижения
+
+       
+
+        public List<GroupAchievement> Get_Group_Achievement()
+        {
+            return db.GroupAchievements.ToList();
+        }
+
+
+        public GroupAchievement Get_Group_Achievement_By_ID(Guid id)
+        {
+            return db.GroupAchievements.SingleOrDefault(o => o.ID == id);
+        }
+
+
+        public GroupAchievement Group_Achievement_Get_Element(Guid id)
+        {
+            return db.GroupAchievements.Find(id);
+        }
+
+        public GroupAchievement Group_Achievement_Create(GroupAchievement obj)
+        {
+            obj.ID = Guid.NewGuid();
+            db.GroupAchievements.Add(obj);
+            db.SaveChanges();
+            obj = db.GroupAchievements.FirstOrDefault(o => o.ID == obj.ID);
+            return obj;
+        }
+
+
+        public GroupAchievement Group_Achievement_Edit(GroupAchievement obj)
+        {
+            db.Entry(obj).State = EntityState.Modified;
+            db.SaveChanges();
+            obj = db.GroupAchievements.SingleOrDefault(o => o.ID == obj.ID);
+            return obj;
+        }
+
+        public GroupAchievement Classgroup_Delete(GroupAchievement obj)
+        {
+            GroupAchievement GroupAchievement = db.GroupAchievements.SingleOrDefault(o => o.ID == obj.ID);
+            db.GroupAchievements.Remove(GroupAchievement);
+            db.SaveChanges();
+            return GroupAchievement;
+        }
+  
+
+    //Достижения студентов
+
+
+
+        public List<StudentAchievement> Get_Student_Achievement()
+        {
+            return db.StudentAchievements.ToList();
+        }
+
+
+        public StudentAchievement Get_Student_Achievement_By_ID(Guid id)
+        {
+            return db.StudentAchievements.SingleOrDefault(o => o.ID == id);
+        }
+
+
+        public StudentAchievement Student_Achievement_Get_Element(Guid id)
+        {
+            return db.StudentAchievements.Find(id);
+        }
+
+        public StudentAchievement Student_Achievement_Create(StudentAchievement obj)
+        {
+            obj.ID = Guid.NewGuid();
+            db.StudentAchievements.Add(obj);
+            db.SaveChanges();
+            obj = db.StudentAchievements.FirstOrDefault(o => o.ID == obj.ID);
+            return obj;
+        }
+
+
+        public StudentAchievement Student_Achievement_Edit(StudentAchievement obj)
+        {
+            db.Entry(obj).State = EntityState.Modified;
+            db.SaveChanges();
+            obj = db.StudentAchievements.SingleOrDefault(o => o.ID == obj.ID);
+            return obj;
+        }
+
+        public StudentAchievement Student_Achievement_Delete(StudentAchievement obj)
+        {
+            StudentAchievement StudentAchievement = db.StudentAchievements.SingleOrDefault(o => o.ID == obj.ID);
+            db.StudentAchievements.Remove(StudentAchievement);
+            db.SaveChanges();
+            return StudentAchievement;
+        }
+   
+     }
 }

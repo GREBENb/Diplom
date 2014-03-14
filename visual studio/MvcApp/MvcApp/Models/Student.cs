@@ -16,9 +16,9 @@ namespace MvcApp.Models
     {
         public Student()
         {
-            this.Classgroups = new HashSet<Classgroup>();
             this.StudentAchievements = new HashSet<StudentAchievement>();
             this.User_client = new HashSet<User_client>();
+            this.ClassgroupControlled = new HashSet<Classgroup>();
         }
     
         public System.Guid ID { get; set; }
@@ -29,8 +29,9 @@ namespace MvcApp.Models
         public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> updated_at { get; set; }
     
-        public virtual ICollection<Classgroup> Classgroups { get; set; }
         public virtual ICollection<StudentAchievement> StudentAchievements { get; set; }
         public virtual ICollection<User_client> User_client { get; set; }
+        public virtual Classgroup Classgroup { get; set; }
+        public virtual ICollection<Classgroup> ClassgroupControlled { get; set; }
     }
 }

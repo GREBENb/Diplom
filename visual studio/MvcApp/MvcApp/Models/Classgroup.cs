@@ -16,18 +16,20 @@ namespace MvcApp.Models
     {
         public Classgroup()
         {
-            this.GroupAchievement = new HashSet<GroupAchievement>();
+            this.GroupAchievements = new HashSet<GroupAchievement>();
+            this.Students = new HashSet<Student>();
         }
     
         public System.Guid ID { get; set; }
         public string Name { get; set; }
         public int Students_count { get; set; }
-        public System.Guid Mainstudent_id { get; set; }
+        public Nullable<System.Guid> Mainstudent_id { get; set; }
         public string user_created { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
         public Nullable<System.DateTime> updated_at { get; set; }
     
-        public virtual Student Student { get; set; }
-        public virtual ICollection<GroupAchievement> GroupAchievement { get; set; }
+        public virtual ICollection<GroupAchievement> GroupAchievements { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
+        public virtual Student MainStudent { get; set; }
     }
 }
